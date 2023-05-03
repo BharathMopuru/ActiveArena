@@ -44,24 +44,24 @@ class BMIResultViewController: UIViewController {
    
     func bmiStatus(){
         if b! < 18.5 {
-            bmiStatusOutlet.text = "Under Weight"
+            bmiStatusOutlet.text = "If your BMI is \(b!) , you are considered as underweight."
             bmiImageOutlet.image = UIImage(named: "underweight")
             
         }
         else if b! >= 18.5 && b! <= 24.9 {
-            bmiStatusOutlet.text = "Normal Weight"
+            bmiStatusOutlet.text = "If your BMI is \(b!), you are considered as Normal Weight."
             bmiImageOutlet.image = UIImage(named: "normal")
         }
         else if b! > 24.9 && b! <= 29.9 {
-            bmiStatusOutlet.text = "Over weight"
+            bmiStatusOutlet.text = "If your BMI is \(b!), you are considered as Over weight."
             bmiImageOutlet.image = UIImage(named: "overweight")
         }
         else if b! > 29.9 && b! <= 34.9 {
-            bmiStatusOutlet.text = "Obesity"
+            bmiStatusOutlet.text = "If your BMI is \(b!), you are considered as Obesity."
             bmiImageOutlet.image = UIImage(named: "obese")
         }
         else if b! > 34.9 {
-            bmiStatusOutlet.text = " Extrem Obesity"
+            bmiStatusOutlet.text = " If your BMI is \(b!), you are considered as Extrem Obesity."
             bmiImageOutlet.image = UIImage(named: "extremelyobese")
         }
        
