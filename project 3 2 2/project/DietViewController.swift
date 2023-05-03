@@ -8,6 +8,15 @@
 import UIKit
 
 class DietViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return n[0].nList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = dietCollectionOutlet.dequeueReusableCell(withReuseIdentifier: "diet", for: indexPath) as! DietCollectionViewCell
+        cell.assignNutri(with: (vnv!.nList[indexPath.row]))
+        return cell
+    }
     
     
     
@@ -23,6 +32,8 @@ class DietViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     @IBOutlet weak var proteinDisplay: UILabel!
+    var vnv : TypeOfNutri?
+
     
    
     
@@ -31,9 +42,29 @@ class DietViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dietCollectionOutlet.delegate = self
+        dietCollectionOutlet.dataSource = self
+        // Do any additional setup after loading the view.
+        typeDisplay.text! = "Type:- \( vnv!.nList[0].name)"
+        caloriesDisplay.text! = "Calories :- \( vnv!.nList[0].calories)"
+        carbsDisplay.text! = "carbohydrates:- \(vnv!.nList[0].carbs)"
+        fatsDisplay.text! = "Fats:- \(vnv!.nList[0].fats)"
+        proteinDisplay.text! = "Proteins:- \(vnv!.nList[0].proteins)"
        
        
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+        assignNutDetails(index: indexPath)
+    }
+    func assignNutDetails(index: IndexPath){
+        typeDisplay.text! = "Type:- \(vnv!.nList[index.row].name)"
+        caloriesDisplay.text! = "Calories :- \( vnv!.nList[index.row].calories)"
+        carbsDisplay.text! = "carbohydrates:- \( vnv!.nList[index.row].carbs)"
+        fatsDisplay.text! = "Fats:- \( vnv!.nList[index.row].fats)"
+        proteinDisplay.text! = "Proteins:- \( vnv!.nList[index.row].proteins)"
+    }
+
     
     /*
     // MARK: - Navigation
