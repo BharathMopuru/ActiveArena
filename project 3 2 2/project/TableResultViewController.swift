@@ -14,6 +14,8 @@ class TableResultViewController: UIViewController {
     @IBOutlet weak var tableSatusOutlet: UITextView!
     
     
+    
+    
    
   
      override func viewDidLoad() {
