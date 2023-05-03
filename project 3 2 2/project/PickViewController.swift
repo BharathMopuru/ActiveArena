@@ -8,6 +8,16 @@
 import UIKit
 
 class PickViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return n.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = pickTableView.dequeueReusableCell(withIdentifier: "dietcell", for: indexPath)
+        cell.textLabel?.text = n[indexPath.row].type
+        return cell
+    }
+    
     
     
     
@@ -16,10 +26,21 @@ class PickViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        pickTableView.delegate = self
+        pickTableView.dataSource = self
     }
     
 
     @IBOutlet weak var pickTableView: UITableView!
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           let transition = segue.identifier
+        if(transition == "diet"){
+            let destination = segue.destination as! DietViewController
+            destination.vnv = n[pickTableView.indexPathForSelectedRow!.row]
+            
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
