@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var heightOutlet: UITextField!
     
     @IBOutlet weak var statusOutlet: UILabel!
+    var BMI : Double?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +38,21 @@ class HomeViewController: UIViewController {
 
     
     @IBAction func calBMI(_ sender: Any) {
+        
+        var height = Double(heightOutlet.text!)
+        var weight = Double(weightOutlet.text!)
+        
+        BMI = weight!/(height! * height!)
+        
     
         
         
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let transition = segue.identifier
+        if transition == "calSegue" {
+            let destination = segue.destination as!  BMIResultViewController
+            destination.b = BMI
+        }
+    }
 }

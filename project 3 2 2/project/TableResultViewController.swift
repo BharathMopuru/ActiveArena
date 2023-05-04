@@ -13,6 +13,8 @@ class TableResultViewController: UIViewController {
     
     @IBOutlet weak var tableSatusOutlet: UITextView!
     
+    var tab : worklis?
+    
     
    
   
@@ -20,7 +22,8 @@ class TableResultViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+         tableImageOutlet.image = tab!.img
+          tableSatusOutlet.text = "\(tab!.name) need to do \(tab!.reps) repos each of \(tab!.time) minutes"
     }
     
 

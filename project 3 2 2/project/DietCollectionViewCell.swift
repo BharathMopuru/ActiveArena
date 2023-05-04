@@ -11,6 +11,9 @@ class DietCollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var imageDietOutlet: UIImageView!
+    func assignNutri(with nuti : Nutrients){
+        imageDietOutlet.image = UIImage(named: nuti.name)
+    }
    
     
 }
