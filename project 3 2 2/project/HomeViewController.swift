@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
         let transition = segue.identifier
         if transition == "calSegue" {
             let destination = segue.destination as!  BMIResultViewController
-            destination.b = BMI
+            destination.b = ((BMI!*100).rounded()/100)
         }
     }
 }
